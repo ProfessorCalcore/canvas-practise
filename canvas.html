@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+	<title>Canvas Practise</title>
+	
+	<style>
+#red {
+background-color:red;
+color:white;
+font-size:30px;
+padding:2px 1px;
+display:block;
+width:50px;
+height:50px;
+}
+
+#black {
+background-color:black;
+color:white;
+font-size:30px;
+padding:2px 1px;
+width:50px;
+height:50px;
+}
+
+
+body {
+background:linear-gradient(to right,grey);
+}
+
+#gameCanvas {
+background-color:white;
+}
+
+.buttonRow {
+display:flex;
+}
+
+
+	
+	</style>
+
+    </head>
+
+    <body>
+	<canvas id = "gameCanvas" width="800" height="400"></canvas>
+	
+
+	<div class = "buttonRow">
+            <button id="red"></button>
+            <button id="black"></button>
+        </div>
+
+
+	
+        <script>
+
+let drawing = false;
+let brushColor = "black";
+
+const redButton = document.body.querySelector("#red");
+redButton.addEventListener("click", function() {
+    brushColor = "red";
+  })
+
+const blackButton = document.body.querySelector("#black");
+blackButton.addEventListener("click", function() {
+    brushColor = "black";
+  })
+
+const canvas = document.querySelector("#gameCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.addEventListener("mousedown", function(event) {drawing = true;});
+canvas.addEventListener("mouseup", function(event) {drawing = false;});
+
+
+canvas.addEventListener("mousemove", function(event) {
+    if(drawing) {
+        const x = event.offsetX;
+        const y = event.offsetY;
+        ctx.fillStyle = brushColor;
+        ctx.fillRect(x,y,10,10);   
+    }
+
+  });
+
+canvas.addEventListener("click", function(event) { 
+    const x = event.offsetX;
+    const y = event.offsetY;
+    ctx.fillStyle = brushColor;
+    ctx.fillRect(x,y,5,5);   
+    
+
+  });
+
+
+        </script>
+    </body>
+
+</html>
