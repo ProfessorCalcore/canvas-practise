@@ -72,11 +72,11 @@ blackButton.addEventListener("click", function() {
 const canvas = document.querySelector("#gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.addEventListener("mousedown", function(event) {drawing = true;});
-canvas.addEventListener("mouseup", function(event) {drawing = false;});
+canvas.addEventListener("pointerdown", function(event) {drawing = true;});
+canvas.addEventListener("pointerup", function(event) {drawing = false;});
 
 
-canvas.addEventListener("mousemove", function(event) {
+canvas.addEventListener("pointermove", function(event) {
     if(drawing) {
         const x = event.offsetX;
         const y = event.offsetY;
@@ -98,5 +98,6 @@ canvas.addEventListener("click", function(event) {
 
         </script>
     </body>
+
 
 </html>
